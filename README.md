@@ -10,6 +10,14 @@ There are many ways of achieving parallelism in LU decomposition.
 
 Focus of this project was on improving the performance of LU decomposition by implementing the improved version of the algorithm using Open-MP loop parallelism. 
 
+# Implementation 
+
+Naive parellilization over inner loop is straight forward but the improved implementation needed careful consideration of below aspects.
+
+- Usage of locks to avoid serial and parallel computations interleaving with each-other and to maintain the synchronization and to avoid lost/incorrect update problems
+- Usage of private and shared variables within the threads
+- Usage of Thread synchronization where necessary
+
 # Program Inputs
 The program needs multiple inputs which should be given as command line arguments.
 - Size of the matrix - A positive integer
